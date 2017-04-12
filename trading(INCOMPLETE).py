@@ -24,3 +24,14 @@ def handle_data(context, data):
    
     elif price <= low_point  and cur_position > 0 and data.can_trade(sid): 
         context.order_target_percent(sid, 0)
+m=M.backtest.v4( 
+    instruments=instruments,
+    start_date=start_date,
+    end_date=end_date,
+    initialize=initialize,
+    handle_data=handle_data,
+    order_price_field_buy='open',
+    order_price_field_sell='open',
+    capital_base=float("1.0e6"),
+    benchmark='000300.INDX',
+)
